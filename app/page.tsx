@@ -107,8 +107,8 @@ export default function Home() {
           <div className="absolute -top-10 left-1/2 h-40 w-40 rounded-full bg-emerald-300/40 blur-3xl" />
           <div className="grid items-center gap-8 lg:grid-cols-2">
             <div>
-              <h1 className="text-4xl font-extrabold leading-tight sm:text-5xl">Bangladesh&apos;s premium path to <span className="text-emerald-600">learn, work, and earn.</span></h1>
-              <p className="mt-4 max-w-xl text-base text-slate-700 sm:text-lg">Priyo Academy combines selective skill training, direct work opportunities in Priyo Marketplace, and secure payouts with Priyo Pay.</p>
+              <h1 className="text-4xl font-extrabold leading-tight sm:text-5xl">Learn Skills. Get Work. Receive Payments.</h1>
+              <p className="mt-4 max-w-xl text-base text-slate-700 sm:text-lg">Join the Priyo ecosystem — Learn from industry experts, access real work opportunities through Priyo Marketplace, and receive payments seamlessly via Priyo Pay.</p>
               <div className="mt-7 flex flex-wrap gap-4">
                 <a href="#courses" className="rounded-xl bg-slate-900 px-6 py-3 font-semibold text-white transition hover:-translate-y-0.5">Explore Programs</a>
                 <a href="#admission" className="rounded-xl bg-brand-gradient px-6 py-3 font-semibold text-slate-900 shadow-glow">Apply for Evaluation</a>
