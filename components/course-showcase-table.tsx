@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo, useState } from 'react';
+import { Clock3, Star, Users } from 'lucide-react';
 
 type CourseItem = {
   title: string;
@@ -25,7 +26,7 @@ export default function CourseShowcaseTable({ items }: { items: CourseItem[] }) 
       <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
         <div>
           <h3 className="text-2xl font-bold">Courses</h3>
-          <p className="text-sm text-slate-300">Browse courses in one table with tab-like navigation.</p>
+          <p className="text-sm text-slate-300">Card-based course catalog with category navigation.</p>
         </div>
         <div className="inline-flex rounded-xl border border-white/10 bg-white/5 p-1">
           {(['All', 'Featured', 'Upcoming Batch'] as const).map((tab) => (
@@ -42,45 +43,30 @@ export default function CourseShowcaseTable({ items }: { items: CourseItem[] }) 
         </div>
       </div>
 
-      <div className="glass-card overflow-x-auto">
-        <table className="min-w-full text-left text-sm">
-          <thead className="border-b border-white/10 bg-white/5 text-slate-200">
-            <tr>
-              <th className="px-4 py-3">Track</th>
-              <th className="px-4 py-3">Course</th>
-              <th className="px-4 py-3">Mentor</th>
-              <th className="px-4 py-3">Duration / Start</th>
-              <th className="px-4 py-3">Fee</th>
-              <th className="px-4 py-3">Rating</th>
-              <th className="px-4 py-3 text-right">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filtered.map((item) => (
-              <tr key={item.title} className="border-b border-white/5">
-                <td className="px-4 py-3">
-                  <span
-                    className={`rounded-full px-3 py-1 text-xs font-semibold ${
-                      item.batch === 'Featured' ? 'bg-brand-500/15 text-brand-500' : 'bg-cyan-500/15 text-cyan-300'
-                    }`}
-                  >
-                    {item.batch}
-                  </span>
-                </td>
-                <td className="px-4 py-3 font-medium text-slate-100">{item.title}</td>
-                <td className="px-4 py-3 text-slate-300">{item.mentor}</td>
-                <td className="px-4 py-3 text-slate-300">{item.duration}</td>
-                <td className="px-4 py-3 text-brand-500">{item.fee}</td>
-                <td className="px-4 py-3 text-amber-400">{item.rating ?? '—'}</td>
-                <td className="px-4 py-3 text-right">
-                  <button className="rounded-lg bg-brand-gradient px-3 py-2 text-xs font-semibold text-slate-900">
-                    {item.cta}
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {filtered.map((item, index) => (
+          <article key={item.title} className="overflow-hidden rounded-2xl border border-white/10 bg-slate-900/70 shadow-soft transition hover:-translate-y-1 hover:shadow-glow">
+            <div className={`h-36 bg-gradient-to-br ${index % 2 === 0 ? 'from-emerald-500/70 to-cyan-500/60' : 'from-green-500/70 to-teal-500/60'} p-4`}>
+              <span className="inline-flex rounded-full bg-black/25 px-3 py-1 text-xs font-semibold text-white">{item.batch}</span>
+            </div>
+            <div className="space-y-4 p-5">
+              <h4 className="line-clamp-2 text-2xl font-semibold leading-snug text-white">{item.title}</h4>
+              <div className="grid grid-cols-3 gap-2 text-xs text-slate-300">
+                <span className="rounded-md bg-white/5 px-2 py-1">Batch {index + 15}</span>
+                <span className="inline-flex items-center gap-1 rounded-md bg-white/5 px-2 py-1"><Users className="h-3.5 w-3.5" /> Mentor</span>
+                <span className="inline-flex items-center gap-1 rounded-md bg-white/5 px-2 py-1"><Clock3 className="h-3.5 w-3.5" /> {item.duration}</span>
+              </div>
+              <p className="text-sm text-slate-300">By {item.mentor}</p>
+              <div className="flex items-center justify-between">
+                <p className="text-lg font-bold text-brand-500">{item.fee}</p>
+                <p className="inline-flex items-center gap-1 text-amber-400"><Star className="h-4 w-4 fill-current" /> {item.rating ?? 'New'}</p>
+              </div>
+              <button className="w-full rounded-lg bg-white/90 py-2 text-sm font-semibold text-slate-900 transition hover:bg-white">
+                {item.cta}
+              </button>
+            </div>
+          </article>
+        ))}
       </div>
     </section>
   );

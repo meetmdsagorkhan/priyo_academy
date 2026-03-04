@@ -151,7 +151,7 @@ export default function Home() {
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <h2 className="text-3xl font-bold">Programs & Events</h2>
-            <p className="mt-2 text-slate-300">Course section is now tab-navigated in one table, same as webinars.</p>
+            <p className="mt-2 text-slate-300">Course and webinar sections now use card systems with category navigation.</p>
           </div>
           <div className="stat-badge">Join a curated community of serious learners</div>
         </div>

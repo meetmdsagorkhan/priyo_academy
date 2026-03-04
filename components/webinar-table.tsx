@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo, useState } from 'react';
+import { CalendarClock, PlayCircle } from 'lucide-react';
 
 type WebinarItem = {
   title: string;
@@ -24,7 +25,7 @@ export default function WebinarTable({ items }: { items: WebinarItem[] }) {
       <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
         <div>
           <h3 className="text-2xl font-bold">Webinars</h3>
-          <p className="text-sm text-slate-300">One table with navigation to switch between upcoming and previous sessions.</p>
+          <p className="text-sm text-slate-300">Card-based webinars with tab navigation by status.</p>
         </div>
         <div className="inline-flex rounded-xl border border-white/10 bg-white/5 p-1">
           {(['All', 'Upcoming', 'Previous'] as const).map((tab) => (
@@ -41,45 +42,27 @@ export default function WebinarTable({ items }: { items: WebinarItem[] }) {
         </div>
       </div>
 
-      <div className="glass-card overflow-x-auto">
-        <table className="min-w-full text-left text-sm">
-          <thead className="border-b border-white/10 bg-white/5 text-slate-200">
-            <tr>
-              <th className="px-4 py-3">Type</th>
-              <th className="px-4 py-3">Webinar</th>
-              <th className="px-4 py-3">Host</th>
-              <th className="px-4 py-3">Schedule / Attendance</th>
-              <th className="px-4 py-3">Access</th>
-              <th className="px-4 py-3 text-right">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredItems.map((item) => (
-              <tr key={item.title} className="border-b border-white/5">
-                <td className="px-4 py-3">
-                  <span
-                    className={`rounded-full px-3 py-1 text-xs font-semibold ${
-                      item.type === 'Upcoming'
-                        ? 'bg-brand-500/15 text-brand-500'
-                        : 'bg-slate-500/20 text-slate-300'
-                    }`}
-                  >
-                    {item.type}
-                  </span>
-                </td>
-                <td className="px-4 py-3 font-medium text-slate-100">{item.title}</td>
-                <td className="px-4 py-3 text-slate-300">{item.host}</td>
-                <td className="px-4 py-3 text-slate-300">{item.schedule}</td>
-                <td className="px-4 py-3 text-brand-500">{item.access}</td>
-                <td className="px-4 py-3 text-right">
-                  <button className="rounded-lg bg-brand-gradient px-3 py-2 text-xs font-semibold text-slate-900">
-                    {item.cta}
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {filteredItems.map((item, index) => (
+          <article key={item.title} className="overflow-hidden rounded-2xl border border-white/10 bg-slate-900/70 shadow-soft transition hover:-translate-y-1 hover:shadow-glow">
+            <div className={`h-32 bg-gradient-to-br ${index % 2 === 0 ? 'from-indigo-500/60 to-cyan-500/60' : 'from-emerald-500/60 to-blue-500/60'} p-4`}>
+              <span className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold ${item.type === 'Upcoming' ? 'bg-emerald-200 text-emerald-900' : 'bg-slate-200 text-slate-800'}`}>
+                {item.type}
+              </span>
+            </div>
+            <div className="space-y-4 p-5">
+              <h4 className="line-clamp-2 text-2xl font-semibold leading-snug text-white">{item.title}</h4>
+              <p className="text-sm text-slate-300">Hosted by {item.host}</p>
+              <div className="grid grid-cols-2 gap-2 text-xs text-slate-300">
+                <span className="inline-flex items-center gap-1 rounded-md bg-white/5 px-2 py-1"><CalendarClock className="h-3.5 w-3.5" /> {item.schedule}</span>
+                <span className="inline-flex items-center gap-1 rounded-md bg-white/5 px-2 py-1"><PlayCircle className="h-3.5 w-3.5" /> {item.access}</span>
+              </div>
+              <button className="w-full rounded-lg bg-white/90 py-2 text-sm font-semibold text-slate-900 transition hover:bg-white">
+                {item.cta}
+              </button>
+            </div>
+          </article>
+        ))}
       </div>
     </section>
   );
