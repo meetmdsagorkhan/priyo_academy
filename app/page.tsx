@@ -2,12 +2,14 @@ import {
   ArrowRight,
   BadgeCheck,
   BriefcaseBusiness,
+  BrainCircuit,
   CalendarClock,
   CreditCard,
   GraduationCap,
   PlayCircle,
   ShieldCheck,
   Star,
+  UserCheck,
   Users
 } from 'lucide-react';
 import ThemeToggle from '@/components/theme-toggle';
@@ -23,15 +25,15 @@ type CourseCard = {
 };
 
 const featuredCourses: CourseCard[] = [
-  { title: 'Full-Stack Web Development Bootcamp', mentor: 'Tanvir Hasan', schedule: '16 Weeks', fee: '৳12,500', rating: 4.9, tone: 'from-emerald-500 to-cyan-500', cta: 'Enroll Now' },
-  { title: 'UI/UX Design for Product Teams', mentor: 'Nusrat Jahan', schedule: '12 Weeks', fee: '৳9,900', rating: 4.8, tone: 'from-lime-500 to-green-500', cta: 'Enroll Now' },
-  { title: 'Data Analytics with Python', mentor: 'Rahat Sarker', schedule: '12 Weeks', fee: '৳10,500', rating: 4.8, tone: 'from-green-400 to-emerald-700', cta: 'Enroll Now' }
+  { title: 'Full-Stack Web Development Bootcamp', mentor: 'Tanvir Hasan', schedule: '16 Weeks', fee: '৳12,500', rating: 4.9, tone: 'from-emerald-500 to-cyan-500', cta: 'Apply for Evaluation' },
+  { title: 'UI/UX Design for Product Teams', mentor: 'Nusrat Jahan', schedule: '12 Weeks', fee: '৳9,900', rating: 4.8, tone: 'from-lime-500 to-green-500', cta: 'Apply for Evaluation' },
+  { title: 'Data Analytics with Python', mentor: 'Rahat Sarker', schedule: '12 Weeks', fee: '৳10,500', rating: 4.8, tone: 'from-green-400 to-emerald-700', cta: 'Apply for Evaluation' }
 ];
 
 const upcomingBatches: CourseCard[] = [
-  { title: 'Freelancing Launchpad (Evening Batch)', mentor: 'Sabbir Ahmed', schedule: 'Starts 18 June 2026', fee: '৳6,500', tone: 'from-teal-500 to-emerald-600', cta: 'Reserve Seat' },
-  { title: 'Digital Marketing Sprint', mentor: 'Shadman Khan', schedule: 'Starts 25 June 2026', fee: '৳8,400', tone: 'from-green-500 to-teal-500', cta: 'Reserve Seat' },
-  { title: 'Motion Graphics Career Track', mentor: 'Afsana Noor', schedule: 'Starts 02 July 2026', fee: '৳11,200', tone: 'from-emerald-600 to-green-500', cta: 'Reserve Seat' }
+  { title: 'Freelancing Launchpad (Evening Batch)', mentor: 'Sabbir Ahmed', schedule: 'Starts 18 June 2026', fee: '৳6,500', tone: 'from-teal-500 to-emerald-600', cta: 'Apply for Evaluation' },
+  { title: 'Digital Marketing Sprint', mentor: 'Shadman Khan', schedule: 'Starts 25 June 2026', fee: '৳8,400', tone: 'from-green-500 to-teal-500', cta: 'Apply for Evaluation' },
+  { title: 'Motion Graphics Career Track', mentor: 'Afsana Noor', schedule: 'Starts 02 July 2026', fee: '৳11,200', tone: 'from-emerald-600 to-green-500', cta: 'Apply for Evaluation' }
 ];
 
 const upcomingWebinars: CourseCard[] = [
@@ -55,9 +57,27 @@ const features = [
 ];
 
 const launchHighlights = [
-  { title: 'Structured Learning Paths', text: 'Beginner-to-pro roadmap with weekly milestones and mentor checkpoints.', icon: GraduationCap },
-  { title: 'Career Acceleration Support', text: 'Portfolio reviews, interview prep, and marketplace profile optimization.', icon: BriefcaseBusiness },
-  { title: 'Unified Earning Ecosystem', text: 'Move from class to client work and receive payouts through Priyo Pay.', icon: CreditCard }
+  { title: 'Quality Over Quantity', text: 'Unlike mass-batch models, we focus on curated cohorts with serious career intent.', icon: UserCheck },
+  { title: 'Career Alignment First', text: 'Our process maps each learner to the right track based on readiness and goals.', icon: BriefcaseBusiness },
+  { title: 'Marketplace-Ready Talent', text: 'Every path is designed to prepare you for real client opportunities in Priyo Marketplace.', icon: CreditCard }
+];
+
+const admissionSteps = [
+  {
+    title: 'Create Your Talent Profile',
+    text: 'Open a professional profile at work.priyo.com so we can understand your skills, interests, learning goals, and career direction.',
+    icon: Users
+  },
+  {
+    title: 'AI-Based Eligibility Assessment',
+    text: 'Our intelligent system evaluates profile strength, skill level, learning readiness, and career alignment before course placement.',
+    icon: BrainCircuit
+  },
+  {
+    title: 'Selective Enrollment',
+    text: 'We admit committed, goal-driven learners only. Eligible applicants get access; others receive better-fit guidance.',
+    icon: UserCheck
+  }
 ];
 
 function ProgramGrid({ title, subtitle, icon: Icon, items }: { title: string; subtitle: string; icon: typeof GraduationCap; items: CourseCard[] }) {
@@ -110,8 +130,8 @@ export default function Home() {
           <nav className="hidden items-center gap-6 text-sm md:flex">
             <a href="#courses" className="hover:text-brand-500">Programs</a>
             <a href="#ecosystem" className="hover:text-brand-500">Ecosystem</a>
-            <a href="#why-priyo" className="hover:text-brand-500">Why Priyo</a>
-            <a href="#cta" className="stat-badge">Join Now</a>
+            <a href="#admission" className="hover:text-brand-500">Admission</a>
+            <a href="#cta" className="stat-badge">Apply Now</a>
             <ThemeToggle />
           </nav>
         </div>
@@ -125,7 +145,7 @@ export default function Home() {
             <p className="mt-6 max-w-xl text-lg text-slate-300">Priyo Academy helps learners build in-demand skills and move directly into Priyo Marketplace with secure payouts via Priyo Pay.</p>
             <div className="mt-8 flex flex-wrap gap-4">
               <a href="#courses" className="rounded-xl bg-brand-gradient px-6 py-3 font-semibold text-slate-900 shadow-glow">Explore Courses</a>
-              <a href="#cta" className="rounded-xl border border-white/20 px-6 py-3 font-semibold hover:border-brand-500">Start Learning</a>
+              <a href="#admission" className="rounded-xl border border-white/20 px-6 py-3 font-semibold hover:border-brand-500">Apply for Evaluation</a>
             </div>
           </div>
           <div className="glass-card relative overflow-hidden p-8">
@@ -176,13 +196,39 @@ export default function Home() {
             <h2 className="text-3xl font-bold">Programs & Events</h2>
             <p className="mt-2 text-slate-300">Explore featured courses, upcoming cohorts, and webinar sessions in one place.</p>
           </div>
-          <div className="stat-badge">4.9 average learner satisfaction</div>
+          <div className="stat-badge">Join a curated community of serious learners</div>
         </div>
 
         <ProgramGrid title="Featured Courses" subtitle="Most enrolled and highest-rated tracks" icon={GraduationCap} items={featuredCourses} />
         <ProgramGrid title="Upcoming Batches" subtitle="New intakes opening soon" icon={CalendarClock} items={upcomingBatches} />
         <ProgramGrid title="Upcoming Webinar" subtitle="Join live learning and Q&A sessions" icon={PlayCircle} items={upcomingWebinars} />
         <ProgramGrid title="Previous Webinar" subtitle="Watch past sessions and insights on demand" icon={PlayCircle} items={previousWebinars} />
+      </section>
+
+      <section id="admission" className="section-shell py-16">
+        <div className="glass-card p-8 md:p-10">
+          <p className="text-sm font-semibold uppercase tracking-wide text-brand-500">Application-Based Enrollment Process</p>
+          <h2 className="mt-3 text-3xl font-bold sm:text-4xl">Your Journey Starts with Evaluation, Not Payment.</h2>
+          <p className="mt-4 max-w-4xl text-slate-300">Before enrolling in any course, every applicant must create a professional profile in Priyo Marketplace. Our AI system evaluates your eligibility to ensure you&apos;re placed in the right course — not just any course.</p>
+
+          <div className="mt-8 grid gap-5 md:grid-cols-3">
+            {admissionSteps.map(({ title, text, icon: Icon }, index) => (
+              <article key={title} className="rounded-2xl border border-white/10 bg-white/5 p-5">
+                <div className="flex items-center gap-3">
+                  <span className="rounded-full bg-brand-500/15 p-2 text-brand-500"><Icon className="h-5 w-5" /></span>
+                  <p className="text-sm font-semibold text-brand-500">Step {index + 1}</p>
+                </div>
+                <h3 className="mt-3 text-xl font-semibold">{title}</h3>
+                <p className="mt-2 text-sm text-slate-300">{text}</p>
+              </article>
+            ))}
+          </div>
+
+          <div className="mt-8 flex flex-wrap gap-4">
+            <a href="https://work.priyo.com" className="rounded-xl bg-brand-gradient px-6 py-3 font-semibold text-slate-900 shadow-glow">Create Marketplace Profile</a>
+            <a href="#courses" className="rounded-xl border border-white/20 px-6 py-3 font-semibold hover:border-brand-500">Apply for Course Evaluation</a>
+          </div>
+        </div>
       </section>
 
       <section id="why-priyo" className="section-shell py-16">
@@ -199,10 +245,10 @@ export default function Home() {
 
       <section id="cta" className="section-shell py-20">
         <div className="rounded-3xl bg-brand-gradient px-8 py-14 text-center text-slate-900 shadow-glow">
-          <p className="text-sm font-semibold uppercase tracking-wide">Build your future with Priyo</p>
-          <h2 className="mt-3 text-4xl font-bold">Start Your Skill Journey Today</h2>
-          <p className="mx-auto mt-4 max-w-2xl text-slate-800">Join early learners and secure your seat in the first wave of career-focused programs.</p>
-          <button className="mt-8 rounded-xl bg-slate-950 px-8 py-3 font-semibold text-white">Join Priyo Academy</button>
+          <p className="text-sm font-semibold uppercase tracking-wide">Selective Admission. Serious Learners Only.</p>
+          <h2 className="mt-3 text-4xl font-bold">We Don&apos;t Sell Courses. We Build Talent.</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-slate-800">Join a curated community of goal-driven learners and apply to be evaluated for the right learning path.</p>
+          <button className="mt-8 rounded-xl bg-slate-950 px-8 py-3 font-semibold text-white">Apply for Evaluation</button>
         </div>
       </section>
 
