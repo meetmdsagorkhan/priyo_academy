@@ -6,13 +6,13 @@ import {
   CalendarClock,
   CreditCard,
   GraduationCap,
-  PlayCircle,
   ShieldCheck,
   Star,
   UserCheck,
   Users
 } from 'lucide-react';
 import ThemeToggle from '@/components/theme-toggle';
+import WebinarTable from '@/components/webinar-table';
 
 type CourseCard = {
   title: string;
@@ -36,16 +36,13 @@ const upcomingBatches: CourseCard[] = [
   { title: 'Motion Graphics Career Track', mentor: 'Afsana Noor', schedule: 'Starts 02 July 2026', fee: '৳11,200', tone: 'from-emerald-600 to-green-500', cta: 'Apply for Evaluation' }
 ];
 
-const upcomingWebinars: CourseCard[] = [
-  { title: 'How Beginners Can Start Earning in 90 Days', mentor: 'Career Success Team', schedule: '12 June 2026 • 8:30 PM', fee: 'Free', tone: 'from-emerald-500 to-green-600', cta: 'Register Free' },
-  { title: 'AI Tools for Freelancers in Bangladesh', mentor: 'Industry Panel', schedule: '19 June 2026 • 9:00 PM', fee: 'Free', tone: 'from-lime-500 to-emerald-600', cta: 'Register Free' },
-  { title: 'Portfolio Review Live Session', mentor: 'Mentor Circle', schedule: '27 June 2026 • 8:00 PM', fee: '৳199', tone: 'from-teal-500 to-green-600', cta: 'Book Spot' }
-];
-
-const previousWebinars: CourseCard[] = [
-  { title: 'Roadmap to Remote Jobs from Bangladesh', mentor: 'Priyo Mentors', schedule: '2,300+ attended', fee: 'Replay Available', tone: 'from-slate-600 to-slate-800', cta: 'Watch Replay' },
-  { title: 'Winning Your First Upwork Client', mentor: 'Freelancer Panel', schedule: '1,900+ attended', fee: 'Replay Available', tone: 'from-slate-700 to-slate-900', cta: 'Watch Replay' },
-  { title: 'CV & LinkedIn Optimization Masterclass', mentor: 'HR Experts', schedule: '1,400+ attended', fee: 'Replay Available', tone: 'from-zinc-700 to-slate-900', cta: 'Watch Replay' }
+const webinars = [
+  { title: 'How Beginners Can Start Earning in 90 Days', host: 'Career Success Team', schedule: '12 June 2026 • 8:30 PM', access: 'Free', cta: 'Register Free', type: 'Upcoming' as const },
+  { title: 'AI Tools for Freelancers in Bangladesh', host: 'Industry Panel', schedule: '19 June 2026 • 9:00 PM', access: 'Free', cta: 'Register Free', type: 'Upcoming' as const },
+  { title: 'Portfolio Review Live Session', host: 'Mentor Circle', schedule: '27 June 2026 • 8:00 PM', access: '৳199', cta: 'Book Spot', type: 'Upcoming' as const },
+  { title: 'Roadmap to Remote Jobs from Bangladesh', host: 'Priyo Mentors', schedule: '2,300+ attended', access: 'Replay Available', cta: 'Watch Replay', type: 'Previous' as const },
+  { title: 'Winning Your First Upwork Client', host: 'Freelancer Panel', schedule: '1,900+ attended', access: 'Replay Available', cta: 'Watch Replay', type: 'Previous' as const },
+  { title: 'CV & LinkedIn Optimization Masterclass', host: 'HR Experts', schedule: '1,400+ attended', access: 'Replay Available', cta: 'Watch Replay', type: 'Previous' as const }
 ];
 
 const features = [
@@ -201,8 +198,7 @@ export default function Home() {
 
         <ProgramGrid title="Featured Courses" subtitle="Most enrolled and highest-rated tracks" icon={GraduationCap} items={featuredCourses} />
         <ProgramGrid title="Upcoming Batches" subtitle="New intakes opening soon" icon={CalendarClock} items={upcomingBatches} />
-        <ProgramGrid title="Upcoming Webinar" subtitle="Join live learning and Q&A sessions" icon={PlayCircle} items={upcomingWebinars} />
-        <ProgramGrid title="Previous Webinar" subtitle="Watch past sessions and insights on demand" icon={PlayCircle} items={previousWebinars} />
+        <WebinarTable items={webinars} />
       </section>
 
       <section id="admission" className="section-shell py-16">
